@@ -1,25 +1,25 @@
-import logo from './logo.svg';
+import logo from "./logo.svg";
+import React, { useState } from 'react';
 import './App.css';
+import ListComponent from "./component/ListComponent";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-function App() {
+const App = () => {
+  let [userName, setUserName] = useState("init");
+
+  const handleChangeName = (e) => {
+    const { value, name } = e.target;
+    setUserName(value);
+  };
+
+  console.log(userName);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <p>Hello, {userName}!</p>
+      <input onChange={handleChangeName}></input>
+      <ListComponent></ListComponent>
     </div>
   );
-}
+};
 
 export default App;
